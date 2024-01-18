@@ -1,6 +1,6 @@
 import logging
 from aiogram import Bot
-from data.config import ADMIN_ID
+from core.config import ADMIN_ID
 
 
 async def on_startup_notify(bot: Bot):
