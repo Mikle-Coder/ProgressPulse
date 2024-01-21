@@ -6,5 +6,5 @@ load_dotenv()
 
 BOT_TOKEN = getenv("BOT_TOKEN")
 ADMIN_ID = getenv("ADMIN_ID")
-POSTGRES_URI = getenv("POSTGRES_URI")
+#POSTGRES_URI = getenv("POSTGRES_URI")
 DATABASE_URL = getenv("DATABASE_URL")

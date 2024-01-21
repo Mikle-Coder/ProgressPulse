@@ -1,10 +1,11 @@
-from sqlalchemy import Column, Integer, DateTime, String, func
-from core.db import Base
+from sqlalchemy import Column, DateTime, func
+from sqlalchemy.orm import relationship
+from core.db import Base, CRUD
+from models.telegram import Telegram
+from models.task import Task
 
 
-class Users(Base):
-    telegram_user_id = Column(String(length=200))
+class User(Base, CRUD):
     created_at = Column(DateTime(timezone=True), default=func.now())
-    first_name = Column(String(length=255))
-    last_name = Column(String(length=255))
-    username = Column(String(length=255))
+    telegram = relationship(Telegram, uselist=False, backref='user', cascade="all, delete")
+    tasks = relationship(Task, backref='user', cascade="all, delete")
