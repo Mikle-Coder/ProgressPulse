@@ -11,13 +11,25 @@ async def on_startup(bot):
 async def run() -> None:
     from .handlers.users.start import rtr as start_rtr
     from .handlers.users.process import rtr as process_rtr
-    from aiogram import Bot, Dispatcher, enums, filters, F
+    from .handlers.users.total_duration import rtr as t_duration_rtr
+    from aiogram import Bot, Dispatcher, enums, F
     from core.config import BOT_TOKEN
+    from core.db import create_db
+    import asyncio
+    from .utils.task_timer import task_timer
+    from telegram_bot.handlers.users.process import task_timeout
 
-    bot = Bot(token=BOT_TOKEN, parse_mode=enums.ParseMode.HTML)
+    task_timer.call_func = task_timeout
+
+    #await create_db()
+    bot = Bot(token=BOT_TOKEN, parse_mode=enums.ParseMode.MARKDOWN)
     dp = Dispatcher()
 
+
     dp.startup.register(on_startup)
-    dp.include_routers(start_rtr, process_rtr)
+    dp.include_routers(start_rtr, process_rtr, t_duration_rtr)
     dp.message.filter(F.chat.type == "private")
-    await dp.start_polling(bot)
+    await asyncio.gather(
+        dp.start_polling(bot),
+        task_timer.check_timeout()
+    )
