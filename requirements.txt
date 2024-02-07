@@ -13,7 +13,6 @@ certifi==2023.11.17
 colorama==0.4.6
 exceptiongroup==1.2.0
 frozenlist==1.4.1
-gino==1.0.1
 greenlet==3.0.3
 idna==3.6
 iniconfig==2.0.0

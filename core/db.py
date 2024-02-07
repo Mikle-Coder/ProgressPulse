@@ -4,7 +4,7 @@ from sqlalchemy import select
 import json
 from core.config import DATABASE_URL
 
-engine = create_async_engine(DATABASE_URL, echo=False)
+engine = create_async_engine(DATABASE_URL, echo=True)
 Session: AsyncSession = async_sessionmaker(engine, expire_on_commit=True)
 
 

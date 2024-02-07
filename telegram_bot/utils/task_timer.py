@@ -15,7 +15,7 @@ class TaskTimer:
     async def remove_task(self, task_id: int):
         self.cache.pop(task_id, None)
 
-    async def check_timeout(self, interval_seconds=1):
+    async def check_timeout(self, interval_seconds=59):
         while True:
             await asyncio.sleep(interval_seconds)
             await self._process_timeouts()
@@ -27,7 +27,7 @@ class TaskTimer:
         for task_id, started_at in self.cache.items():
             elapsed_seconds = (now - started_at).total_seconds()
 
-            if elapsed_seconds > self.max_period_seconds - 0.5:
+            if elapsed_seconds > self.max_period_seconds:
                 tasks_to_remove.append(task_id)
                 if self.call_func:
                     await self.call_func(task_id)
