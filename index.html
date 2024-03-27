@@ -66,6 +66,10 @@
         #viewport-params-expand {
             top: 30px;
         }
+
+        #viewport-user-info {
+            top: 56px;
+        }
     </style>
 </head>
 
@@ -154,7 +158,7 @@
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
 
             var userEl = document.getElementById("viewport-user-info");
-            userEl.innerText = 'User ID: ' + (Telegram.WebApp.initDataUnsafe.user.id ?? 'Not Telegram')
+            userEl.innerText = 'User ID: ' + (Telegram?.WebApp?.initDataUnsafe?.user?.id ?? 'Not Telegram')
             //'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
         }
 
