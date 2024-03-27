@@ -154,7 +154,7 @@
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
 
             var userEl = document.getElementById("viewport-user-info");
-            expandEl.innerText = 'User ID: ' + Telegram.WebApp.initDataUnsafe.user.id
+            userEl.innerText = 'User ID: ' + (Telegram.WebApp.initDataUnsafe.user.id ?? 'Not Telegram')
             //'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
         }
 
