@@ -109,6 +109,7 @@
     <script>
         // Init TWA
         Telegram.WebApp.ready();
+        Telegram.WebApp.expand();
 
         // Event occurs whenever theme settings are changed in the user's Telegram app (including switching to night mode).
         Telegram.WebApp.onEvent('themeChanged', function () {
@@ -158,7 +159,7 @@
             expandEl.innerText = 'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
 
             var userEl = document.getElementById("viewport-user-info");
-            userEl.innerText = 'User ID: ' + (Telegram?.WebApp?.initDataUnsafe?.user?.id ?? 'Not Telegram')
+            userEl.innerText = 'User ID: ' + (Telegram.WebApp?.initDataUnsafe?.user?.id ?? 'Not Telegram')
             //'Is Expanded: ' + (Telegram.WebApp.isExpanded ? 'true' : 'false');
         }
 
