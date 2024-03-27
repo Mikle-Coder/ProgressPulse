@@ -79,10 +79,15 @@
             <a href="https://ton.org/"><img width="48" src="./assets/tapps.png" alt="logo of telegram web apps"></a>
         </div>
         <h1>Modals</h1>
-        <button onclick=" Telegram.WebApp.CloudStorage.getItem('Message', (error, result) => {
-            if (error) {
-                Telegram.WebApp.showAlert('Нет значени'); } else { Telegram.WebApp.showAlert(result); } });">Launch
-            Alert</button>
+        <button onclick="Telegram.WebApp.CloudStorage.getItem('Message', (error, result) => {
+            if (!error && result && result.length === 0) {
+                Telegram.WebApp.showAlert('Нет значения');
+            } else if (!error) {
+                Telegram.WebApp.showAlert(result);
+            } else {
+                Telegram.WebApp.showAlert('Произошла ошибка: ' + error);
+            }
+        });">Launch Alert</button>
 
 
 
