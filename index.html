@@ -79,7 +79,13 @@
             <a href="https://ton.org/"><img width="48" src="./assets/tapps.png" alt="logo of telegram web apps"></a>
         </div>
         <h1>Modals</h1>
-        <button onclick="Telegram.WebApp.showAlert('Hello World!');">Launch Alert</button>
+        <button onclick=" Telegram.WebApp.CloudStorage.getItem('Message', (error, result) => {
+            if (error) {
+                Telegram.WebApp.showAlert(" Произошла ошибка:"); } else { Telegram.WebApp.showAlert(result); // Пример
+            вывода результата в консоль } });">Launch Alert</button>
+
+
+
         <button onclick="showPopup();">Launch Popup</button>
 
         <h1>Links</h1>
